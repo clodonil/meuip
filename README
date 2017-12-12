@@ -1,7 +1,16 @@
-docker build -t clodoniltrigo/meuip .
-docker run -it  --env EMAIL_TO='destino@email.corp' --env EMAIL_FROM='origin@gmail.com' --env PASSWD='senha' --name meuip clodoniltrigo/meuip
-docker commit meuip clodoniltrigo/meuip:home
 
+* Gerando a Imagem do Dockerfile
+docker build -t hostname/meuip .
+
+* Passando variável
+docker run -it  --env EMAIL_TO='destino@email.corp' --env EMAIL_FROM='origin@gmail.com' --env PASSWD='senha' --name meuip clodoniltrigo/meuip
+
+* Gerando novo commit com as variável
+docker commit meuip clodoniltrigo/meuip:v1
+
+
+
+* Adicionando no Cron para executar de roda em hora
 
 CRON
-0 * * * * docker run -it clodoniltrigo/meuip:home
+0 * * * * docker run -it clodoniltrigo/meuip:v1
