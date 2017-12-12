@@ -1,0 +1,7 @@
+docker build -t clodoniltrigo/meuip .
+docker run -it  --env EMAIL_TO='destino@email.corp' --env EMAIL_FROM='origin@gmail.com' --env PASSWD='senha' --name meuip clodoniltrigo/meuip
+docker commit meuip clodoniltrigo/meuip:home
+
+
+CRON
+0 * * * * docker run -it clodoniltrigo/meuip:home
